@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "8bb7fae8-7d45-4ed1-85d0-c1b88091310a",
+		"name": "movie-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33330181"
+	},
+	"item": [
+		{
+			"name": "movie-authentication-routes",
+			"item": [
+				{
+					"name": "post-auth-signup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"vimal@gmail.com\",\r\n  \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						},
+						"description": "Initial signup can be done using this endpoint"
+					},
+					"response": []
+				},
+				{
+					"name": "post-auth-signin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"vimal@gmail.com\",\r\n  \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						},
+						"description": "After signingup signing in can be done in this endpoint"
+					},
+					"response": []
+				},
+				{
+					"name": "post-auth-accessToken using RefreshToken",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjhlNWI1Y2E5YjIyYmU4ODg3NDg0OGUiLCJpYXQiOjE3MjA3MTA1ODgsImV4cCI6MTc1MjI0NjU4OH0.zFabDntaQmOp_qNwstzIe1xUiZV8CGXLpG_bT24yhNg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/refresh_token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"refresh_token"
+							]
+						},
+						"description": "After 1 hour access token get expired so use this endpoint but giving the refresh token generated to get the new access token"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication and autherization process will be handled in this folder"
+		},
+		{
+			"name": "movie-routes",
+			"item": [
+				{
+					"name": "get-movies-by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjhlNWI1Y2E5YjIyYmU4ODg3NDg0OGUiLCJpYXQiOjE3MjA3MTA5MDIsImV4cCI6MTcyMDcxNDUwMn0.YgY82RhoZEji1Gp0KHSrigkY2m3jMGb2klUVSdZrcrU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movie/:movieId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								":movieId"
+							],
+							"variable": [
+								{
+									"key": "movieId",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Use this endpoint to request movies by either id or mongoId"
+					},
+					"response": []
+				},
+				{
+					"name": "get-movieRoutes-get all movies",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjhlNWI1Y2E5YjIyYmU4ODg3NDg0OGUiLCJpYXQiOjE3MjA3MTA5MDIsImV4cCI6MTcyMDcxNDUwMn0.YgY82RhoZEji1Gp0KHSrigkY2m3jMGb2klUVSdZrcrU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movie/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								""
+							]
+						},
+						"description": "Use this endpoint to request all movies"
+					},
+					"response": []
+				},
+				{
+					"name": "patch-movies-patching movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjhlNWI1Y2E5YjIyYmU4ODg3NDg0OGUiLCJpYXQiOjE3MjA3MTQ5OTYsImV4cCI6MTcyMDcxODU5Nn0.xvLufwdiv-We9qCo_A0XGmX4T15f-tIbAPS_EFuFDwA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\":2,\r\n\"movieName\":\"TItanic\",\r\n\"director\":\"James\",\r\n\"rating\":\"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movie/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								""
+							]
+						},
+						"description": "Use this endpoint to post movies"
+					},
+					"response": []
+				},
+				{
+					"name": "delete-movies-deleting movies by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjhlNWI1Y2E5YjIyYmU4ODg3NDg0OGUiLCJpYXQiOjE3MjA3MTQ5OTYsImV4cCI6MTcyMDcxODU5Nn0.xvLufwdiv-We9qCo_A0XGmX4T15f-tIbAPS_EFuFDwA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\":2,\r\n\"movieName\":\"TItanic-tamil\",\r\n\"director\":\"James-tamil\",\r\n\"rating\":\"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movie/:movieId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								":movieId"
+							],
+							"variable": [
+								{
+									"key": "movieId",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Use this endpoint to patch movies by either id or mongoId"
+					},
+					"response": []
+				},
+				{
+					"name": "delete-movies-deleting movies by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjhlNWI1Y2E5YjIyYmU4ODg3NDg0OGUiLCJpYXQiOjE3MjA3MTQ5OTYsImV4cCI6MTcyMDcxODU5Nn0.xvLufwdiv-We9qCo_A0XGmX4T15f-tIbAPS_EFuFDwA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\":2,\r\n\"movieName\":\"TItanic-tamil\",\r\n\"director\":\"James-tamil\",\r\n\"rating\":\"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/movie/:movieId/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								":movieId",
+								""
+							],
+							"variable": [
+								{
+									"key": "movieId",
+									"value": "66900495a085e87c822aa2b8"
+								}
+							]
+						},
+						"description": "Use this endpoint to delete movies by either id or mongoId"
+					},
+					"response": []
+				}
+			],
+			"description": "Movie routes will be handled here"
+		}
+	]
+}
